@@ -292,24 +292,20 @@ form.addEventListener("submit", function (e) {
     emailjs.sendForm(
         "service_cggacbz",
         "template_6q4n7kk",
+
         this
     )
-        .then(() => {
-
+        .then(function (response) {
+            console.log("SUCCESS!", response.status, response.text);
             alert("Message Sent Successfully ✅");
-
             form.reset();
-
         })
-        .catch((error) => {
-            console.log("EmailJS Error:", error);
-
-            if (error.text) {
-                console.log(error.text);
-            }
-
-            alert(error.text || "Failed");
+        .catch(function (error) {
+            console.log("FAILED...", error);
+            alert("Failed ❌");
         });
+
+   
 
 
 });
